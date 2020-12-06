@@ -103,7 +103,6 @@ namespace Lab1_2
         private static double TextDeviationEstimationFunc(string text)
         {
             int[] letterCounts = new int[64];
-            int lettersTotalCount = 0;
             Array.Fill(letterCounts, 0);
 
             for (int i = 0; i < text.Length; i++)
@@ -112,12 +111,10 @@ namespace Lab1_2
                 if (ind >= 0 && ind < 26)
                 {
                     letterCounts[ind]++;
-                    lettersTotalCount++;
                 }
                 else if (ind >= 32 && ind < 58)
                 {
                     letterCounts[ind - 32]++;
-                    lettersTotalCount++;
                 }
             }
 
