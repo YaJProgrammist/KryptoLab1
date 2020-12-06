@@ -11,40 +11,34 @@ namespace Lab1_1
             StreamWriter sw = new StreamWriter("../../../../Out.txt");
             string str = sr.ReadToEnd();
 
-            int[] array = new int[30];
-            char[] letters = new char[30];
+            int[] array = new int[26];
             Array.Fill(array, 0);
 
             for (int i = 0; i < str.Length; i++)
             {
                 int ind = str[i] - 'a';
-                if (ind >= 0 && ind < 30)
-                    array[ind]++;
-            }
-
-            for (int i = 0; i < 30; i++)
-            {
-                letters[i] = (char)('a' + i);
-            }
-
-            for (int i = 0; i < 30; i++)
-            {
-                for (int j = 0; j < 30; j++)
+                if (ind >= 0 && ind < 26)
                 {
-                    if (array[i] > array[j])
-                    {
-                        int temp = array[i];
-                        array[i] = array[j];
-                        array[j] = temp;
-
-                        char temCh = letters[i];
-                        letters[i] = letters[j];
-                        letters[j] = temCh;
-                    }
+                    array[ind]++;
+                }
+                else if (ind >= 32 && ind < 58)
+                {
+                    array[ind - 32]++;
                 }
             }
 
-            int key = letters[0] ^ 'e';
+            int maxFreqNum = 0;
+            for (int i = 1; i < 26; i++)
+            {
+                if (array[i] > array[maxFreqNum])
+                {
+                    maxFreqNum = i;
+                }
+            }
+
+            char mostFreqChar = (char)('a' + maxFreqNum);
+
+            int key = mostFreqChar ^ 'e';
 
             string outStr = "";
 
