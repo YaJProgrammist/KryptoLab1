@@ -151,7 +151,7 @@ namespace Lab1_2
             string inpStr = sr.ReadToEnd();
             byte[] input = StrToBytes(inpStr);
 
-            //CalculateKeyLength(str); // turned out it is 3
+            //CalculateKeyLength(input); // turned out it is 3
 
             int keyLength = 3;
             List<int>[] keys = new List<int>[keyLength];
